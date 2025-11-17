@@ -38,17 +38,48 @@ with st.sidebar:
         ('Azul Cielo', 'Rosa Fresa', 'Verde Menta', 'Púrpura Mágico', 'Rojo Clásico')
     )
     
-    # Mapeo del color seleccionado a códigos hexadecimales
-    color_map = {
-        'Azul Cielo': '#66c2ff',
-        'Rosa Fresa': '#ff66b2',
-        'Verde Menta': '#77dd77',
-        'Púrpura Mágico': '#9a67ea',
-        'Rojo Clásico': '#ff4c4c'
-    }
+    # Mapeo de colores para todos los selectbox
+COLOR_MAP = {
+    'Azul Cielo': '#66c2ff',
+    'Rosa Fresa': '#ff66b2',
+    'Verde Menta': '#77dd77',
+    'Púrpura Mágico': '#9a67ea',
+    'Rojo Clásico': '#ff4c4c',
+    'Gris Neutro': '#AAAAAA'
+}
+
+# --- BARRA LATERAL (SECCIÓN DE OPCIONES Y SELECTBOX) ---
+with st.sidebar:
+    # Título para la sección de opciones en la barra lateral.
+    st.write("# Opciones de Visualización 🦇")
     
-    # Variable que usaremos en los gráficos
-    bar_color = color_map[selected_color]
+    # Crea un control deslizante (slider) que permite al usuario seleccionar un número de bins
+    div = st.slider('Número de bins para el Histograma de Edades:', 1, 10, 5) 
+    st.write("Bins seleccionados:", div)
+    
+    st.markdown("---") # Separador visual
+    
+    # ----------------------------------------------------
+    # SELECTBOX INDIVIDUAL 1: Color para Histograma de Edades
+    # ----------------------------------------------------
+    color_hist_name = st.selectbox(
+        '🎨 Color para el Histograma de Edades:',
+        ('Púrpura Mágico', 'Azul Cielo', 'Rosa Fresa', 'Verde Menta', 'Rojo Clásico'),
+        index=0 # Púrpura Mágico como predeterminado
+    )
+    bar_color_hist = COLOR_MAP[color_hist_name]
+
+    st.markdown("---") # Separador visual
+    
+    # ----------------------------------------------------
+    # SELECTBOX INDIVIDUAL 2: Color para Distribución por Sexo
+    # ----------------------------------------------------
+    color_sex_name = st.selectbox(
+        '🎨 Color principal para Distribución por Sexo:',
+        ('Azul Cielo', 'Rosa Fresa', 'Verde Menta', 'Púrpura Mágico', 'Rojo Clásico'),
+        index=0 # Azul Cielo como predeterminado
+    )
+    bar_color_sex = COLOR_MAP[color_sex_name]
 # --- Gráficos Originales (Histograma de Edad y Distribución por Sexo) ---
 st.write("### Gráficos de Distribución de Población")
 fig, ax = plt.subplots(1, 2, figsize=(12, 4))
