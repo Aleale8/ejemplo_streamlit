@@ -11,6 +11,7 @@ st.write("""
 ## Gráficos usando la base de datos del Titanic
 """)
 
+
 # Usando la notación "with" para crear una barra lateral en la aplicación Streamlit.
 with st.sidebar:
     # Título para la sección de opciones en la barra lateral.
@@ -22,6 +23,32 @@ with st.sidebar:
     
     # Muestra el valor actual del slider en la barra lateral.
     st.write("Bins=", div)
+with st.sidebar:
+    # Título para la sección de opciones en la barra lateral.
+    st.write("# Opciones de Visualización")
+    
+    # Crea un control deslizante (slider) que permite al usuario seleccionar un número de bins
+    div = st.slider('Número de bins para el Histograma de Edades:', 1, 10, 5) 
+    st.write("Bins seleccionados:", div)
+    
+    #selectbox
+    st.markdown("---") # Separador visual
+    selected_color = st.selectbox(
+        'Elige el color base para los gráficos:',
+        ('Azul Cielo', 'Rosa Fresa', 'Verde Menta', 'Púrpura Mágico', 'Rojo Clásico')
+    )
+    
+    # Mapeo del color seleccionado a códigos hexadecimales
+    color_map = {
+        'Azul Cielo': '#66c2ff',
+        'Rosa Fresa': '#ff66b2',
+        'Verde Menta': '#77dd77',
+        'Púrpura Mágico': '#9a67ea',
+        'Rojo Clásico': '#ff4c4c'
+    }
+    
+    # Variable que usaremos en los gráficos
+    bar_color = color_map[selected_color]
 # --- Gráficos Originales (Histograma de Edad y Distribución por Sexo) ---
 st.write("### Gráficos de Distribución de Población")
 fig, ax = plt.subplots(1, 2, figsize=(12, 4))
