@@ -70,7 +70,7 @@ with st.sidebar:
     st.markdown("---") # Separador visual
     
    
-    #select box 4:: Color para Sobrevivientes
+    #select box 4: Color primario sobrevivientes
 
     color_survivor_name = st.selectbox(
         'Color de "Sobrevivió":',
@@ -78,6 +78,14 @@ with st.sidebar:
         index=0 # Verde Menta como predeterminado
     )
     bar_color_survivor = COLOR_MAP[color_survivor_name]
+    
+    #select box 5: Color secundario no sobrevivientes
+    color_no_survivor_name = st.selectbox(
+        'Color de "No Sobrevivió":',
+        ('Verde Menta', 'Azul Cielo', 'Rosa Fresa', 'Púrpura Mágico', 'Rojo Clásico'),
+        index=0 # Verde Menta como predeterminado
+    )
+    bar_color_no_survivor = COLOR_MAP[color_no_survivor_name]
 
 
 #Gráficos de Distribución
@@ -118,7 +126,7 @@ fig_survivors, ax_survivors = plt.subplots(figsize=(6, 4))
 survivors_by_sex.plot(kind='bar', 
                       ax=ax_survivors, 
                       rot=0, # Mantiene las etiquetas de "Sex" horizontales
-                      color={'Sobrevivió': '#77dd77', 'No Sobrevivió': '#ff6961'})
+                      color=[bar_color_survivor, bar_color_no_survivor]
 
 ax_survivors.set_title('Supervivencia por Sexo')
 ax_survivors.set_xlabel('Sexo')
