@@ -23,18 +23,18 @@ with st.sidebar:
     # Muestra el valor actual del slider en la barra lateral.
     st.write("Bins=", div)
 
-# Desplegamos un histograma con los datos del eje X
+#desplegamos un histograma con los datos del eje X
 fig, ax = plt.subplots(1, 2, figsize=(10, 3))
 ax[0].hist(df["Age"], bins=div)
 ax[0].set_xlabel("Edad")
 ax[0].set_ylabel("Frecuencia")
 ax[0].set_title("Histograma de edades")
 
-# Tomando datos para hombres y contando la cantidad
+#tomando datos para hombres y contando la cantidad
 df_male = df[df["Sex"] == "male"]
 cant_male = len(df_male)
 
-# Tomando datos para mujeres y contando la cantidad
+#tomando datos para mujeres y contando la cantidad
 df_female = df[df["Sex"] == "female"]
 cant_female = len(df_female)
 
@@ -43,7 +43,7 @@ ax[1].set_xlabel("Sexo")
 ax[1].set_ylabel("Cantidad")
 ax[1].set_title('Distribución de hombres y mujeres')
 
-# Desplegamos el gráfico
+#desplegamos el gráfico
 st.pyplot(fig)
 
 st.write("""
@@ -53,7 +53,7 @@ st.write("""
 st.table(df.head())
 
 
-# agrupacion por sexo
+#agrupacion por sexo
 st.write("Sobrevivientes por sexo")
 
 #grupar los datos para contar los sobrevivientes y no sobrevivientespor sexo.
@@ -74,17 +74,17 @@ ax_survivors.set_xlabel('Sexo')
 ax_survivors.set_ylabel('Número de Personas')
 ax_survivors.legend(title='Estado')
 
-# Desplegamos el gráfico en Streamlit
+#desplegamos el gráfico en Streamlit
 st.pyplot(fig_survivors)
 
-# 3. Mostrar la tabla de conteo de forma clara
+#mostrar la tabla de conteo
 st.write("#Tabla de Conteo de Sobrevivientes")
 st.dataframe(survivors_by_sex)
 
 
-# --- Muestra de datos cargados (Tu código original) ---
+#muestra de datos cargados
 st.write("""
 # Muestra de datos cargados
 """)
-# Graficamos una tabla con las primeras 5 filas
+#graficamos una tabla con las primeras 5 filas
 st.table(df.head())
