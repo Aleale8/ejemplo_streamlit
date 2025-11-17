@@ -94,7 +94,7 @@ ax[0].set_title("Histograma de Edades")
 # Distribución de Hombres y Mujeres
 df_sex_counts = df["Sex"].value_counts()
 # Usa 'bar_color_sex' como color principal (y Gris Neutro como secundario)
-colors_sex = [bar_color_sex, COLOR_MAP['Gris Neutro']] 
+colors_sex = [ bar_color_sex_primary, bar_color_sex_secondary] 
 ax[1].bar(df_sex_counts.index, df_sex_counts.values, color=colors_sex)
 ax[1].set_xlabel("Sexo")
 ax[1].set_ylabel("Cantidad")
