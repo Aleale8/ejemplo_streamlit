@@ -84,3 +84,10 @@ st.write("""
 """)
 #graficamos una tabla con las primeras 5 filas
 st.table(df.head())
+
+
+selected_color = st.selectbox(
+    'Elige el color base para las barras:',
+    ('Azul Cielo', 'Rosa Fresa', 'Verde Menta', 'Púrpura Mágico')
+)
+ax[0].hist(df["Age"].dropna(), bins=div, color=bar_color, edgecolor='black', alpha=0.7)
