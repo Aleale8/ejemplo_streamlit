@@ -15,16 +15,6 @@ st.write("""
 # Usando la notación "with" para crear una barra lateral en la aplicación Streamlit.
 with st.sidebar:
     # Título para la sección de opciones en la barra lateral.
-    st.write("# Opciones")
-    
-    # Crea un control deslizante (slider) que permite al usuario seleccionar un número de bins
-    # en el rango de 0 a 10, con un valor predeterminado de 2.
-    div = st.slider('Número de bins:', 0, 10, 2)
-    
-    # Muestra el valor actual del slider en la barra lateral.
-    st.write("Bins=", div)
-with st.sidebar:
-    # Título para la sección de opciones en la barra lateral.
     st.write("# Opciones de Visualización")
     
     # Crea un control deslizante (slider) que permite al usuario seleccionar un número de bins
