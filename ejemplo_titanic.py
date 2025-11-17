@@ -13,22 +13,7 @@ st.write("""
 
 
 # Usando la notación "with" para crear una barra lateral en la aplicación Streamlit.
-with st.sidebar:
-    # Título para la sección de opciones en la barra lateral.
-    st.write("# Opciones de Visualización")
-    
-    # Crea un control deslizante (slider) que permite al usuario seleccionar un número de bins
-    div = st.slider('Número de bins para el Histograma de Edades:', 1, 10, 5) 
-    st.write("Bins seleccionados:", div)
-    
-    #selectbox
-    st.markdown("---") # Separador visual
-    selected_color = st.selectbox(
-        'Elige el color base para los gráficos:',
-        ('Azul Cielo', 'Rosa Fresa', 'Verde Menta', 'Púrpura Mágico', 'Rojo Clásico')
-    )
-    
-    # Mapeo de colores para todos los selectbox
+# Mapeo de colores para todos los selectbox
 COLOR_MAP = {
     'Azul Cielo': '#66c2ff',
     'Rosa Fresa': '#ff66b2',
