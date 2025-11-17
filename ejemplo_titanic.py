@@ -31,11 +31,11 @@ ax[0].set_ylabel("Frecuencia")
 ax[0].set_title("Histograma de edades")
 
 #tomando datos para hombres y contando la cantidad
-df_male = df[df["Sex"] == "male"]
+df_male = df[df["Sex"] == "hombres"]
 cant_male = len(df_male)
 
 #tomando datos para mujeres y contando la cantidad
-df_female = df[df["Sex"] == "female"]
+df_female = df[df["Sex"] == "mujeres"]
 cant_female = len(df_female)
 
 ax[1].bar(["Masculino", "Femenino"], [cant_male, cant_female], color = "red")
