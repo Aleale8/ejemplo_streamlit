@@ -48,10 +48,10 @@ COLOR_MAP = {
     'Gris Neutro': '#AAAAAA'
 }
 
-# --- BARRA LATERAL (SECCIÓN DE OPCIONES Y SELECTBOX) ---
+#BARRA LATERAL (SECCIÓN DE OPCIONES Y SELECTBOX)
 with st.sidebar:
     # Título para la sección de opciones en la barra lateral.
-    st.write("# Opciones de Visualización 🦇")
+    st.write("# Opciones de Visualización")
     
     # Crea un control deslizante (slider) que permite al usuario seleccionar un número de bins
     div = st.slider('Número de bins para el Histograma de Edades:', 1, 10, 5) 
@@ -59,11 +59,11 @@ with st.sidebar:
     
     st.markdown("---") # Separador visual
     
-    # ----------------------------------------------------
-    # SELECTBOX INDIVIDUAL 1: Color para Histograma de Edades
-    # ----------------------------------------------------
+
+    #sELECTBOX INDIVIDUAL 1: Color para Histograma de Edades
+
     color_hist_name = st.selectbox(
-        '🎨 Color para el Histograma de Edades:',
+        'Color para el Histograma de Edades:',
         ('Púrpura Mágico', 'Azul Cielo', 'Rosa Fresa', 'Verde Menta', 'Rojo Clásico'),
         index=0 # Púrpura Mágico como predeterminado
     )
@@ -71,16 +71,16 @@ with st.sidebar:
 
     st.markdown("---") # Separador visual
     
-    # ----------------------------------------------------
+
     # SELECTBOX INDIVIDUAL 2: Color para Distribución por Sexo
-    # ----------------------------------------------------
     color_sex_name = st.selectbox(
-        '🎨 Color principal para Distribución por Sexo:',
+        'Color principal para Distribución por Sexo:',
         ('Azul Cielo', 'Rosa Fresa', 'Verde Menta', 'Púrpura Mágico', 'Rojo Clásico'),
         index=0 # Azul Cielo como predeterminado
     )
     bar_color_sex = COLOR_MAP[color_sex_name]
-# --- Gráficos Originales (Histograma de Edad y Distribución por Sexo) ---
+    
+#Histograma de Edad y Distribución por Sexo
 st.write("### Gráficos de Distribución de Población")
 fig, ax = plt.subplots(1, 2, figsize=(12, 4))
 
