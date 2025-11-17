@@ -23,7 +23,7 @@ COLOR_MAP = {
     'Gris Neutro': '#AAAAAA'
 }
 
-#BARRA LATERAL (SECCIÓN DE OPCIONES Y SELECTBOX)
+#barra lateral
 with st.sidebar:
     # Título para la sección de opciones en la barra lateral.
     st.write("# Opciones de Visualización")
@@ -35,7 +35,7 @@ with st.sidebar:
     st.markdown("---") # Separador visual
     
 
-    #sELECTBOX INDIVIDUAL 1: Color para Histograma de Edades
+    #select box: Color para Histograma de Edades
 
     color_hist_name = st.selectbox(
         'Color para el Histograma de Edades:',
@@ -46,8 +46,9 @@ with st.sidebar:
 
     st.markdown("---") # Separador visual
     
-
-    # SELECTBOX INDIVIDUAL 2: Color para Distribución por Sexo
+   
+    #select box: Color para Distribución por Sexo
+   
     color_sex_name = st.selectbox(
         'Color principal para Distribución por Sexo:',
         ('Azul Cielo', 'Rosa Fresa', 'Verde Menta', 'Púrpura Mágico', 'Rojo Clásico'),
@@ -55,31 +56,41 @@ with st.sidebar:
     )
     bar_color_sex = COLOR_MAP[color_sex_name]
     
-#Histograma de Edad y Distribución por Sexo
+    st.markdown("---") # Separador visual
+    
+
+    #select box: Color para Sobrevivientes
+
+    color_survivor_name = st.selectbox(
+        'Color de "Sobrevivió" (Último gráfico):',
+        ('Verde Menta', 'Azul Cielo', 'Rosa Fresa', 'Púrpura Mágico', 'Rojo Clásico'),
+        index=0 # Verde Menta como predeterminado
+    )
+    bar_color_survivor = COLOR_MAP[color_survivor_name]
+
+
+#Gráficos de Distribución
 st.write("### Gráficos de Distribución de Población")
 fig, ax = plt.subplots(1, 2, figsize=(12, 4))
 
 # Histograma de Edades
-ax[0].hist(df["Age"].dropna(), bins=div, color='#9a67ea', edgecolor='black')
+# Usa 'bar_color_hist'
+ax[0].hist(df["Age"].dropna(), bins=div, color=bar_color_hist, edgecolor='black', alpha=0.7) 
 ax[0].set_xlabel("Edad")
 ax[0].set_ylabel("Frecuencia")
 ax[0].set_title("Histograma de Edades")
 
 # Distribución de Hombres y Mujeres
 df_sex_counts = df["Sex"].value_counts()
-ax[1].bar(df_sex_counts.index, df_sex_counts.values, color=['#ff66b2', '#66c2ff'])
+# Usa 'bar_color_sex' como color principal (y Gris Neutro como secundario)
+colors_sex = [bar_color_sex, COLOR_MAP['Gris Neutro']] 
+ax[1].bar(df_sex_counts.index, df_sex_counts.values, color=colors_sex)
 ax[1].set_xlabel("Sexo")
 ax[1].set_ylabel("Cantidad")
 ax[1].set_title('Distribución por Sexo')
 
 # Desplegamos el gráfico
 st.pyplot(fig)
-
-st.write("""
-## Muestra de datos cargados
-""")
-# Graficamos una tabla
-st.table(df.head())
 
 
 #agrupacion por sexo
