@@ -15,6 +15,11 @@ st.write("""
 with st.sidebar:
     # Título para la sección de opciones en la barra lateral.
     st.write("# Opciones")
+    selected_color = st.selectbox(
+    'Elige el color base para las barras:',
+    ('Azul Cielo', 'Rosa Fresa', 'Verde Menta', 'Púrpura Mágico')
+)
+ax[0].hist(df["Age"].dropna(), bins=div, color=bar_color, edgecolor='black', alpha=0.7)
     
     # Crea un control deslizante (slider) que permite al usuario seleccionar un número de bins
     # en el rango de 0 a 10, con un valor predeterminado de 2.
@@ -86,8 +91,4 @@ st.write("""
 st.table(df.head())
 
 
-selected_color = st.selectbox(
-    'Elige el color base para las barras:',
-    ('Azul Cielo', 'Rosa Fresa', 'Verde Menta', 'Púrpura Mágico')
-)
-ax[0].hist(df["Age"].dropna(), bins=div, color=bar_color, edgecolor='black', alpha=0.7)
+
