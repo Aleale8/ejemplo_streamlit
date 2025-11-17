@@ -20,7 +20,8 @@ COLOR_MAP = {
     'Verde Menta': '#77dd77',
     'Púrpura Mágico': '#9a67ea',
     'Rojo Clásico': '#ff4c4c',
-    'Gris Neutro': '#AAAAAA'
+    'Gris Neutro': '#AAAAAA',
+    'Naranja Solar': '#ffaa4c'
 }
 
 #barra lateral
@@ -35,7 +36,7 @@ with st.sidebar:
     st.markdown("---") # Separador visual
     
 
-    #select box: Color para Histograma de Edades
+    #select box 1: Color para Histograma de Edades
 
     color_hist_name = st.selectbox(
         'Color para el Histograma de Edades:',
@@ -46,23 +47,33 @@ with st.sidebar:
 
     st.markdown("---") # Separador visual
     
+
+    #select box 2: Color principal (Mujer) para distribución por sexo
+ 
+    color_sex_primary_name = st.selectbox(
+        'Color principal (Mujer) para Distribución por Sexo:',
+        ('Rosa Fresa', 'Azul Cielo', 'Verde Menta', 'Púrpura Mágico', 'Rojo Clásico'),
+        index=0 # Rosa Fresa como predeterminado
+    )
+    bar_color_sex_primary = COLOR_MAP[color_sex_primary_name]
+    
    
-    #select box: Color para Distribución por Sexo
-   
-    color_sex_name = st.selectbox(
-        'Color principal para Distribución por Sexo:',
-        ('Azul Cielo', 'Rosa Fresa', 'Verde Menta', 'Púrpura Mágico', 'Rojo Clásico'),
+    #select box 3: Color secundario (Hombre) para distribución por sexo
+    
+    color_sex_secondary_name = st.selectbox(
+        'Color secundario (Hombre) para Distribución por Sexo:',
+        ('Azul Cielo', 'Gris Neutro', 'Verde Menta', 'Púrpura Mágico', 'Rojo Clásico'),
         index=0 # Azul Cielo como predeterminado
     )
-    bar_color_sex = COLOR_MAP[color_sex_name]
+    bar_color_sex_secondary = COLOR_MAP[color_sex_secondary_name]
     
     st.markdown("---") # Separador visual
     
-
-    #select box: Color para Sobrevivientes
+   
+    #select box 4:: Color para Sobrevivientes
 
     color_survivor_name = st.selectbox(
-        'Color de "Sobrevivió" (Último gráfico):',
+        'Color de "Sobrevivió":',
         ('Verde Menta', 'Azul Cielo', 'Rosa Fresa', 'Púrpura Mágico', 'Rojo Clásico'),
         index=0 # Verde Menta como predeterminado
     )
