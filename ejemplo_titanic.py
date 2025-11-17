@@ -22,28 +22,24 @@ with st.sidebar:
     
     # Muestra el valor actual del slider en la barra lateral.
     st.write("Bins=", div)
+# --- Gráficos Originales (Histograma de Edad y Distribución por Sexo) ---
+st.write("### Gráficos de Distribución de Población")
+fig, ax = plt.subplots(1, 2, figsize=(12, 4))
 
-#desplegamos un histograma con los datos del eje X
-fig, ax = plt.subplots(1, 2, figsize=(10, 3))
-ax[0].hist(df["Age"], bins=div)
+# Histograma de Edades
+ax[0].hist(df["Age"].dropna(), bins=div, color='#9a67ea', edgecolor='black')
 ax[0].set_xlabel("Edad")
 ax[0].set_ylabel("Frecuencia")
-ax[0].set_title("Histograma de edades")
+ax[0].set_title("Histograma de Edades")
 
-#tomando datos para hombres y contando la cantidad
-df_male = df[df["Sex"] == "hombres"]
-cant_male = len(df_male)
-
-#tomando datos para mujeres y contando la cantidad
-df_female = df[df["Sex"] == "mujeres"]
-cant_female = len(df_female)
-
-ax[1].bar(["Masculino", "Femenino"], [cant_male, cant_female], color = "red")
+# Distribución de Hombres y Mujeres
+df_sex_counts = df["Sex"].value_counts()
+ax[1].bar(df_sex_counts.index, df_sex_counts.values, color=['#ff66b2', '#66c2ff'])
 ax[1].set_xlabel("Sexo")
 ax[1].set_ylabel("Cantidad")
-ax[1].set_title('Distribución de hombres y mujeres')
+ax[1].set_title('Distribución por Sexo')
 
-#desplegamos el gráfico
+# Desplegamos el gráfico
 st.pyplot(fig)
 
 st.write("""
