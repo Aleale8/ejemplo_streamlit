@@ -51,3 +51,40 @@ st.write("""
 """)
 # Graficamos una tabla
 st.table(df.head())
+
+
+# agrupacion por sexo
+st.write("Sobrevivientes por sexo")
+
+#grupar los datos para contar los sobrevivientes y no sobrevivientespor sexo.
+survivors_by_sex = df.groupby(['Sex', 'Survived']).size().unstack(fill_value=0)
+
+#renombrar las columnas
+survivors_by_sex.columns = ['No Sobrevivió', 'Sobrevivió']
+
+#crear un nuevo gráfico de barras
+fig_survivors, ax_survivors = plt.subplots(figsize=(6, 4))
+survivors_by_sex.plot(kind='bar', 
+                      ax=ax_survivors, 
+                      rot=0, # Mantiene las etiquetas de "Sex" horizontales
+                      color={'Sobrevivió': '#77dd77', 'No Sobrevivió': '#ff6961'})
+
+ax_survivors.set_title('Supervivencia por Sexo')
+ax_survivors.set_xlabel('Sexo')
+ax_survivors.set_ylabel('Número de Personas')
+ax_survivors.legend(title='Estado')
+
+# Desplegamos el gráfico en Streamlit
+st.pyplot(fig_survivors)
+
+# 3. Mostrar la tabla de conteo de forma clara
+st.write("#Tabla de Conteo de Sobrevivientes")
+st.dataframe(survivors_by_sex)
+
+
+# --- Muestra de datos cargados (Tu código original) ---
+st.write("""
+# Muestra de datos cargados
+""")
+# Graficamos una tabla con las primeras 5 filas
+st.table(df.head())
