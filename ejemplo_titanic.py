@@ -126,7 +126,7 @@ fig_survivors, ax_survivors = plt.subplots(figsize=(6, 4))
 survivors_by_sex.plot(kind='bar', 
                       ax=ax_survivors, 
                       rot=0, # Mantiene las etiquetas de "Sex" horizontales
-                      color=[bar_color_survivor, bar_color_no_survivor]
+                      color=[bar_color_survivor, bar_color_no_survivor])
 
 ax_survivors.set_title('Supervivencia por Sexo')
 ax_survivors.set_xlabel('Sexo')
